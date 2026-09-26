@@ -1,0 +1,26 @@
+---
+title: "p8105_hw1_qc2385"
+author: "Qixuan Cao"
+date: "2026-09-26"
+output: html_document
+---
+
+## Problem 1
+Let's take a look at the penguins dataset:
+```{r load pegunis}
+data("penguins", package = "palmerpenguins")
+```
+
+The penguins dataset contains measurements and characteristics of penguins.
+
+It has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+
+The variables are `r paste(names(penguins), collapse = ", ")`.
+
+The species are `r paste(unique(penguins$species), collapse = ", ")`,
+
+The islands are `r paste(unique(penguins$island), collapse = ", ")`.
+
+Bill length and flipper length are measured in millimeters.
+
+The mean flipper length is `r round(mean(penguins$flipper_length_mm, na.rm = TRUE), 1)` mm.
