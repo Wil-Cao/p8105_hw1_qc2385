@@ -2,7 +2,7 @@
 title: "p8105_hw1_qc2385"
 author: "Qixuan Cao"
 date: "2026-09-26"
-output: html_document
+output: github_document
 ---
 
 ## Problem 1
@@ -43,5 +43,6 @@ scatter_plot = ggplot(
 scatter_plot
 ```
 
+## Problem 2
 
 
