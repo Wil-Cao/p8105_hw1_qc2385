@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ## Problem 1
-Let's take a look at the penguins dataset:
+Let's read the penguins dataset:
 ```{r load pegunis}
 data("penguins", package = "palmerpenguins")
 ```
@@ -24,3 +24,24 @@ The islands are `r paste(unique(penguins$island), collapse = ", ")`.
 Bill length and flipper length are measured in millimeters.
 
 The mean flipper length is `r round(mean(penguins$flipper_length_mm, na.rm = TRUE), 1)` mm.
+
+### scatterplot
+```{r}
+library(ggplot2)
+```
+```{r peguin_plot}
+scatter_plot = ggplot(
+  penguins,
+  aes(
+    x = bill_length_mm, 
+    y = flipper_length_mm, 
+    color = species
+      )
+) + 
+  geom_point()
+
+scatter_plot
+```
+
+
+
