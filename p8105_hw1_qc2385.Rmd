@@ -44,5 +44,46 @@ scatter_plot
 ```
 
 ## Problem 2
+```{r}
+library(tidyverse)
+```
+Create the data frame
+```{r hw1_df}
+hw1_df = 
+  tibble(
+    norm_sample = rnorm(10, mean = 0, sd = 1),
+    greater_than_0 = norm_sample > 0,
+    char_var = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+    factor_var = factor(rep(c("low", "medium", "high"), length.out =10))
+  )
 
+hw1_df
+
+```
+Try to take the mean of each variable in the data frame
+```{r mean}
+mean(pull(hw1_df, norm_sample))
+mean(pull(hw1_df, greater_than_0))
+mean(pull(hw1_df, char_var))
+mean(pull(hw1_df, factor_var))
+```
+The mean of `norm_sample` works because it is numeric. 
+
+The mean of `greater_than_0` also works because R treats `TRUE` as 1 and `FALSE` as 0;
+
+The means of `char_var` and `factor_var` return `NA` because these variables are not numeric or logical.
+
+applies the as.numeric function:
+```{r convert_to_numeric, eval=FALSE}
+as.numeric(hw1_df$greater_than_0)
+as.numeric(hw1_df$char_var)
+as.numeric(hw1_df$factor_var)
+```
+Converting the logical variable to numeric changes `TRUE` to 1 and `FALSE` to 0. This explains why its mean gives the proportion of values greater than zero. 
+
+The character values are letters, so they cannot be converted to numbers and become NA.
+
+Converting the factor gives the numeric codes of its levels (`high` = 1, `low` = 2, and `medium` = 3). These codes are category labels, not meaningful numerical measurements, so calculating their mean would not be useful.
+
+Therefore,`mean()` only works when a variable can be given a genuine numeric interpretation.
 
